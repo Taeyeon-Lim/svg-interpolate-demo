@@ -7,6 +7,7 @@ const getIndex = (_: string, index: number) => index;
 
 export default function MotionMixerFlubber() {
   const maxSegmentLength = useMotionValue(0.5);
+  const [viewPoints, setViewPoints] = useState(false);
 
   const [, animate] = useAnimate();
   const [pathIndex, setPathIndex] = useState(0);
@@ -34,7 +35,7 @@ export default function MotionMixerFlubber() {
     };
 
     play();
-  }, [pathIndex]);
+  }, [pathIndex, animate]);
 
   return (
     <>
@@ -44,8 +45,29 @@ export default function MotionMixerFlubber() {
         height='400'
         viewBox='0 0 25 25'
       >
-        <motion.path d={path} fill={fill} stroke={"transparent"} />
+        <defs>
+          <marker
+            id='dot'
+            viewBox='0 0 4 4'
+            refX='2'
+            refY='2'
+            markerWidth='2'
+            markerHeight='2'
+            orient='auto'
+          >
+            <circle cx='2' cy='2' r='.25' fill='#000' />
+          </marker>
+        </defs>
+
+        <motion.path
+          d={path}
+          fill={fill}
+          stroke={"transparent"}
+          markerStart={viewPoints ? "url(#dot)" : ""}
+          markerMid={viewPoints ? "url(#dot)" : ""}
+        />
       </svg>
+
       <div
         style={{
           display: "flex",
@@ -64,6 +86,10 @@ export default function MotionMixerFlubber() {
           defaultValue={maxSegmentLength.get()}
           onChange={(e) => maxSegmentLength.set(Number(e.currentTarget.value))}
         />
+        {/* spot view control */}
+        <button onClick={() => setViewPoints((prev) => !prev)}>
+          View Points
+        </button>
       </div>
     </>
   );

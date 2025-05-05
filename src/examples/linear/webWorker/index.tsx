@@ -2,9 +2,9 @@ import { motion, useAnimate, useMotionValue, useTransform } from "motion/react";
 import { useState, useEffect } from "react";
 import pathToPoints from "./pathToPoints";
 import { paths, colors, InterpolateConfig as config } from "@utils/pathVars";
-import Worker from "./linearInterpolate.js?worker";
+import Worker from "./worker.js?worker";
 
-export default function WorkerCustomLinear() {
+export default function WorkerLinear() {
   // Setting State
   const frame = useMotionValue(180);
   const pointCount = useMotionValue(400);

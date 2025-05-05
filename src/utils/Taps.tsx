@@ -3,9 +3,10 @@ import { Dispatch, SetStateAction } from "react";
 
 const helperTaps = ["Rotate Text"] as const;
 const InterpolateTaps = [
-  "motion mixer + flubber",
-  "web worker + flubber",
-  "web worker + linear interpolate",
+  "flubber + motion mixer",
+  "flubber + web worker",
+  "linear + motion mixer",
+  "linear + web worker",
 ] as const;
 
 export type Tap =

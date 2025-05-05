@@ -1,10 +1,11 @@
 import "@/app.css";
 import { Fragment, useState } from "react";
-import UiFreezingTest from "@utils/UiFreezingTest";
-import WorkerFlubber from "@examples/workerFlubber";
-import WorkerCustomLinear from "@examples/workerCustomLinear";
-import MotionMixerFlubber from "@examples/motionMixerFlubber";
 import Taps, { Tap } from "@utils/Taps";
+import UiFreezingTest from "@utils/UiFreezingTest";
+import WorkerLinear from "@examples/linear/webWorker";
+import MotionMixerLinear from "@examples/linear/motionMixer";
+import MotionMixerFlubber from "@examples/flubber/motionMixer";
+import WorkerFlubber from "@examples/flubber/workerFlubber";
 
 function App() {
   const [taps, setTaps] = useState<Tap[]>([]);
@@ -19,9 +20,10 @@ function App() {
             {
               {
                 "Rotate Text": <UiFreezingTest />,
-                "motion mixer + flubber": <MotionMixerFlubber />,
-                "web worker + flubber": <WorkerFlubber />,
-                "web worker + linear interpolate": <WorkerCustomLinear />,
+                "flubber + motion mixer": <MotionMixerFlubber />,
+                "flubber + web worker": <WorkerFlubber />,
+                "linear + motion mixer": <MotionMixerLinear />,
+                "linear + web worker": <WorkerLinear />,
               }[tap]
             }
           </Fragment>
