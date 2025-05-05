@@ -8,7 +8,7 @@ const getIndex = (_: string, index: number) => index;
 
 export default function MotionMixerLinear() {
   // Setting State
-  const pointCount = useMotionValue(400);
+  const pointCount = useMotionValue(180);
   const [viewPoints, setViewPoints] = useState(false);
 
   // Morphing State

@@ -7,7 +7,7 @@ import Worker from "./worker.js?worker";
 export default function WorkerLinear() {
   // Setting State
   const frame = useMotionValue(180);
-  const pointCount = useMotionValue(400);
+  const pointCount = useMotionValue(180);
   const [viewPoints, setViewPoints] = useState(false);
 
   // Morphing State
