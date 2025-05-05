@@ -2,7 +2,7 @@ import { useMotionValue, useTransform, motion, useAnimate } from "motion/react";
 import { useState, useEffect } from "react";
 import { colors, paths, InterpolateConfig as config } from "@utils/pathVars";
 
-const workerURL = new URL("./worker.ts", import.meta.url);
+const workerURL = new URL("./worker.js", import.meta.url);
 
 export default function WorkerFlubber() {
   const maxSegmentLength = useMotionValue(0.5);

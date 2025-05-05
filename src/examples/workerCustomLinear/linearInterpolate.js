@@ -1,10 +1,8 @@
-type point = [number, number][];
-
 self.onmessage = ({ data }) => {
   const { fromPath, toPath, steps } = data;
 
   // 선형 보간
-  function interpolatePoints(pointsA: point, pointsB: point, t: number): point {
+  function interpolatePoints(pointsA, pointsB, t) {
     return pointsA.map((pointA, i) => {
       const pointB = pointsB[i];
       return [
@@ -15,7 +13,7 @@ self.onmessage = ({ data }) => {
   }
 
   // 점 배열을 path 문자열로 변환
-  function pointsToPath(points: point) {
+  function pointsToPath(points) {
     let pathData = `M ${points[0][0].toFixed(3)} ${points[0][1].toFixed(3)}`;
 
     for (let i = 1; i < points.length; i++) {

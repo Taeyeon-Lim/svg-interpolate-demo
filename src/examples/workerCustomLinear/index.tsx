@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import pathToPoints from "./pathToPoints";
 import { paths, colors, InterpolateConfig as config } from "@utils/pathVars";
 
-const workerURL = new URL("./linearInterpolate.ts", import.meta.url);
+const workerURL = new URL("./linearInterpolate.js", import.meta.url);
 
 export default function WorkerCustomLinear() {
   // Setting State
