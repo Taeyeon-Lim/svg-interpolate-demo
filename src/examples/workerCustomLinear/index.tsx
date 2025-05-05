@@ -2,8 +2,7 @@ import { motion, useAnimate, useMotionValue, useTransform } from "motion/react";
 import { useState, useEffect } from "react";
 import pathToPoints from "./pathToPoints";
 import { paths, colors, InterpolateConfig as config } from "@utils/pathVars";
-
-const workerURL = new URL("./linearInterpolate.js", import.meta.url);
+import Worker from "./linearInterpolate.js?worker";
 
 export default function WorkerCustomLinear() {
   // Setting State
@@ -26,7 +25,7 @@ export default function WorkerCustomLinear() {
   useEffect(() => {
     if (!window.Worker) return;
 
-    const worker = new Worker(workerURL);
+    const worker = new Worker();
 
     worker.postMessage({
       fromPath: pathToPoints(paths[pathIndex], pointCount.get()),

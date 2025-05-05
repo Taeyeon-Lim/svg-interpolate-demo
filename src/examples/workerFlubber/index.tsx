@@ -1,8 +1,7 @@
 import { useMotionValue, useTransform, motion, useAnimate } from "motion/react";
 import { useState, useEffect } from "react";
 import { colors, paths, InterpolateConfig as config } from "@utils/pathVars";
-
-const workerURL = new URL("./worker.js", import.meta.url);
+import Worker from "./worker.js?worker";
 
 export default function WorkerFlubber() {
   const maxSegmentLength = useMotionValue(0.5);
@@ -22,7 +21,7 @@ export default function WorkerFlubber() {
   useEffect(() => {
     if (!window.Worker) return;
 
-    const worker = new Worker(workerURL, { type: "module" });
+    const worker = new Worker();
 
     worker.postMessage({
       fromPath: paths[pathIndex],
