@@ -4,10 +4,12 @@ SVG에서의 path에 대해 보간 애니메이션을 적용해보는 저장소�
 
 ### Interpolate Type
 
+- [x] Flubber
+  - [x] with motion mixer
+  - [x] with web worker
 - [x] Linear
-  - [x] Web worker + Flubber interpolate
-  - [x] Web worker + Linear interpolate
-  - [x] motion mixer + Flubber interpolate
+  - [x] with motion mixer
+  - [x] with web worker
 - [ ] Curve
 
 ### Using Library
