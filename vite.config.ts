@@ -5,6 +5,9 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
 
+  // Using github pages
+  base: "/svg-interpolate-demo/",
+
   // For Runtime: absolute path
   resolve: {
     alias: {
