@@ -1,6 +1,6 @@
 import { motion, useAnimate, useMotionValue, useTransform } from "motion/react";
 import { useState, useEffect } from "react";
-import pathToPoints from "./pathToPoints";
+import pathToPoints from "../pathToPoints";
 import { paths, colors, InterpolateConfig as config } from "@utils/pathVars";
 import Worker from "./worker.js?worker";
 
