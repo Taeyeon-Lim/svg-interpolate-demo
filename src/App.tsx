@@ -6,9 +6,6 @@ import WorkerCustomLinear from "@examples/workerCustomLinear";
 import MotionMixerFlubber from "@examples/motionMixerFlubber";
 import Taps, { Tap } from "@utils/Taps";
 
-// github Action 배포하기
-// https://www.youtube.com/watch?v=tjV7nVX9CAA
-
 function App() {
   const [taps, setTaps] = useState<Tap[]>([]);
 
