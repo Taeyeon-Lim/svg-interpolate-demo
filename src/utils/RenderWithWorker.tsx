@@ -34,13 +34,6 @@ export default function RenderWithWorker({
 
     const worker = new WorkerInstance();
 
-    worker.postMessage({
-      fromPath: paths[pathIndex],
-      toPath: paths[pathIndex + 1],
-      ...workerProps,
-      frameCount: frameCount.get(),
-    });
-
     worker.onmessage = (e) => {
       if (e.data.frames) {
         path.set(e.data.frames[0]);
@@ -48,6 +41,17 @@ export default function RenderWithWorker({
         runAnimation(e.data.frames);
       }
     };
+
+    worker.onerror = (e) => {
+      console.error(e);
+    };
+
+    worker.postMessage({
+      fromPath: paths[pathIndex],
+      toPath: paths[pathIndex + 1],
+      ...workerProps,
+      frameCount: frameCount.get(),
+    });
 
     const runAnimation = async (frames: string[]) => {
       const colorAnimation = animate(progress, 1, config);
@@ -70,7 +74,7 @@ export default function RenderWithWorker({
     };
 
     return () => worker.terminate();
-  }, [animate, pathIndex]);
+  }, [pathIndex, animate]);
 
   return (
     <>
@@ -80,7 +84,11 @@ export default function RenderWithWorker({
         <motion.path
           d={path}
           fill={fill}
-          stroke='transparent'
+          stroke={
+            workerProps?.pointCount && workerProps.pointCount < 3
+              ? fill
+              : "transparent"
+          }
           markerStart={viewPoints ? "url(#dot)" : ""}
           markerMid={viewPoints ? "url(#dot)" : ""}
         />
