@@ -63,7 +63,7 @@ export default function WorkerFlubber() {
 
   return (
     <>
-      <svg width='400' height='400' viewBox='0 0 30 30'>
+      <svg width='400' height='400' viewBox='0 0 25 25'>
         <defs>
           <marker
             id='dot'
