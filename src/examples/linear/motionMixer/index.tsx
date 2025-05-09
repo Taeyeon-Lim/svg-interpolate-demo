@@ -1,7 +1,7 @@
 import { MouseEvent, useState } from "react";
-import RenderWithMotionMixer from "@utils/RenderWithMotionMixer";
 import { interpolatePoints, pointsToLinearPath } from "../interpolate";
-import pathToPoints from "../pathToPoints";
+import RenderWithMotionMixer from "@utils/RenderWithMotionMixer";
+import pathToPoints from "@utils/pathToPoints";
 
 export default function MotionMixerLinear() {
   const [pointCount, setPointCount] = useState(180);
@@ -23,7 +23,7 @@ export default function MotionMixerLinear() {
   };
 
   return (
-    <RenderWithMotionMixer mixer={linearMixer}>
+    <RenderWithMotionMixer mixer={linearMixer} motionProps={{ pointCount }}>
       {/* point count control */}
       [Point: {pointCount}]
       <input

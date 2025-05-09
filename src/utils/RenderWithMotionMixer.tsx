@@ -4,9 +4,11 @@ import { colors, paths, InterpolateConfig as config } from "@utils/pathVars";
 
 export default function RenderWithMotionMixer({
   mixer,
+  motionProps,
   children,
 }: PropsWithChildren<{
   mixer: ((from: string, to: string) => (v: number) => any) | undefined;
+  motionProps?: { [key: string]: number };
 }>) {
   // Controls State
   const [viewPoints, setViewPoints] = useState(false);
@@ -51,7 +53,11 @@ export default function RenderWithMotionMixer({
         <motion.path
           d={path}
           fill={fill}
-          stroke={"transparent"}
+          stroke={
+            motionProps?.pointCount && motionProps.pointCount < 3
+              ? fill
+              : "transparent"
+          }
           markerStart={viewPoints ? "url(#dot)" : ""}
           markerMid={viewPoints ? "url(#dot)" : ""}
         />
