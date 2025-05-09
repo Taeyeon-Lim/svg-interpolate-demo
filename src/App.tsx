@@ -3,9 +3,9 @@ import { Fragment, useState } from "react";
 import Taps, { Tap } from "@utils/Taps";
 import UiFreezingTest from "@utils/UiFreezingTest";
 import WorkerLinear from "@examples/linear/webWorker";
+import WorkerFlubber from "@examples/flubber/webWorker";
 import MotionMixerLinear from "@examples/linear/motionMixer";
 import MotionMixerFlubber from "@examples/flubber/motionMixer";
-import WorkerFlubber from "@examples/flubber/workerFlubber";
 
 function App() {
   const [taps, setTaps] = useState<Tap[]>([]);

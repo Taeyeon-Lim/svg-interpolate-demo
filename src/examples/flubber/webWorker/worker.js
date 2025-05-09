@@ -1,7 +1,7 @@
 import { interpolate } from "flubber";
 
 self.onmessage = ({ data }) => {
-  const { fromPath, toPath, steps, maxSegmentLength } = data;
+  const { fromPath, toPath, frameCount, maxSegmentLength } = data;
 
   // 보간
   const morphFunction = interpolate(fromPath, toPath, {
@@ -10,8 +10,8 @@ self.onmessage = ({ data }) => {
 
   const frames = [];
 
-  for (let i = 0; i < steps; i++) {
-    const t = i / steps;
+  for (let i = 0; i < frameCount; i++) {
+    const t = i / frameCount;
     frames.push(morphFunction(t));
   }
 
