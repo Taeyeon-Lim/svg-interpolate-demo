@@ -14,14 +14,14 @@ function interpolatePoints(pointsA: Point, pointsB: Point, t: number) {
   });
 }
 
-function pointsToPath(points: Point) {
+function pointsToLinearPath(points: Point) {
   let pathData = `M ${points[0][0].toFixed(3)} ${points[0][1].toFixed(3)}`;
 
   for (let i = 1; i < points.length; i++) {
-    pathData += `L ${points[i][0].toFixed(3)} ${points[i][1].toFixed(3)}`;
+    pathData += ` L ${points[i][0].toFixed(3)} ${points[i][1].toFixed(3)}`;
   }
 
-  return pathData + "Z";
+  return pathData + " Z";
 }
 
-export { interpolatePoints, pointsToPath };
+export { interpolatePoints, pointsToLinearPath };

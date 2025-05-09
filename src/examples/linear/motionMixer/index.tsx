@@ -1,7 +1,7 @@
 import { motion, useAnimate, useMotionValue, useTransform } from "motion/react";
 import { useState, useEffect } from "react";
 import pathToPoints from "../pathToPoints";
-import { interpolatePoints, pointsToPath } from "../interpolate";
+import { interpolatePoints, pointsToLinearPath } from "../interpolate";
 import { paths, colors, InterpolateConfig as config } from "@utils/pathVars";
 
 const getIndex = (_: string, index: number) => index;
@@ -24,7 +24,7 @@ export default function MotionMixerLinear() {
 
       return (t) => {
         const points = interpolatePoints(pathA, pathB, t);
-        const path = pointsToPath(points);
+        const path = pointsToLinearPath(points);
 
         return path;
       };
