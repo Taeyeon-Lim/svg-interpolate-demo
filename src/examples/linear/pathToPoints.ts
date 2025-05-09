@@ -1,13 +1,7 @@
+import { svgPathProperties } from "svg-path-properties";
+
 export default function pathToPoints(pathString: string, numPoints: number) {
-  const tempSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  tempSvg.style.position = "absolute";
-  tempSvg.style.visibility = "hidden";
-
-  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", pathString);
-  tempSvg.appendChild(path);
-  document.body.appendChild(tempSvg);
-
+  const path = getPathProperties(pathString);
   const pathLength = path.getTotalLength();
   const points = [];
   const pointCount = numPoints - 1;
@@ -18,7 +12,16 @@ export default function pathToPoints(pathString: string, numPoints: number) {
     points.push([point.x, point.y]);
   }
 
-  document.body.removeChild(tempSvg);
-
   return points;
+}
+
+function getPathProperties(pathString: string) {
+  if (typeof window !== "undefined" && window?.document) {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", pathString);
+
+    return path;
+  }
+
+  return new svgPathProperties(pathString);
 }

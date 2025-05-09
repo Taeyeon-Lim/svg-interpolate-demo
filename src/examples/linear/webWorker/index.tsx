@@ -1,6 +1,5 @@
 import { motion, useAnimate, useMotionValue, useTransform } from "motion/react";
 import { useState, useEffect } from "react";
-import pathToPoints from "../pathToPoints";
 import { paths, colors, InterpolateConfig as config } from "@utils/pathVars";
 import Worker from "./worker.js?worker";
 
@@ -28,9 +27,10 @@ export default function WorkerLinear() {
     const worker = new Worker();
 
     worker.postMessage({
-      fromPath: pathToPoints(paths[pathIndex], pointCount.get()),
-      toPath: pathToPoints(paths[pathIndex + 1], pointCount.get()),
+      fromPath: paths[pathIndex],
+      toPath: paths[pathIndex + 1],
       steps: frame.get(),
+      pointCount: pointCount.get(),
     });
 
     worker.onmessage = (e) => {

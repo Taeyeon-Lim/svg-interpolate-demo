@@ -1,12 +1,15 @@
 import { interpolatePoints, pointsToLinearPath } from "../interpolate";
+import pathToPoints from "../pathToPoints";
 
 self.onmessage = ({ data }) => {
-  const { fromPath, toPath, steps } = data;
+  const { fromPath, toPath, steps, pointCount } = data;
+  const fromPoints = pathToPoints(fromPath, pointCount);
+  const toPoints = pathToPoints(toPath, pointCount);
   const frames = [];
 
   for (let i = 0; i <= steps; i++) {
     const t = i / steps;
-    const points = interpolatePoints(fromPath, toPath, t);
+    const points = interpolatePoints(fromPoints, toPoints, t);
     const path = pointsToLinearPath(points);
     frames.push(path);
   }
