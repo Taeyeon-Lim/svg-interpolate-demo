@@ -1,5 +1,5 @@
 import { interpolatePoints, pointsToLinearPath } from "../interpolate";
-import pathToPoints from "../pathToPoints";
+import pathToPoints from "@utils/pathToPoints";
 
 self.onmessage = ({ data }) => {
   const { fromPath, toPath, frameCount, pointCount } = data;
