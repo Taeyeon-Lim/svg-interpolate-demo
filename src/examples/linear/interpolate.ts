@@ -2,9 +2,9 @@
  * Linear Interpolate
  */
 
-type Point = number[][];
+import { Points } from "@/types/points";
 
-function interpolatePoints(pointsA: Point, pointsB: Point, t: number) {
+function interpolatePoints(pointsA: Points, pointsB: Points, t: number) {
   return pointsA.map((pointA, i) => {
     const pointB = pointsB[i];
     return [
@@ -14,11 +14,11 @@ function interpolatePoints(pointsA: Point, pointsB: Point, t: number) {
   });
 }
 
-function pointsToLinearPath(points: Point) {
-  let pathData = `M ${points[0][0].toFixed(3)} ${points[0][1].toFixed(3)}`;
+function pointsToLinearPath(points: Points) {
+  let pathData = `M ${points[0][0]} ${points[0][1]}`;
 
   for (let i = 1; i < points.length; i++) {
-    pathData += ` L ${points[i][0].toFixed(3)} ${points[i][1].toFixed(3)}`;
+    pathData += ` L ${points[i][0]} ${points[i][1]}`;
   }
 
   return pathData + " Z";
