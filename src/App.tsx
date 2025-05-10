@@ -4,8 +4,10 @@ import Taps, { Tap } from "@utils/Taps";
 import UiFreezingTest from "@utils/UiFreezingTest";
 import WorkerLinear from "@examples/linear/webWorker";
 import WorkerFlubber from "@examples/flubber/webWorker";
+import WorkerQuadraticBezier from "@examples/bezierQuadratic/webWorker";
 import MotionMixerLinear from "@examples/linear/motionMixer";
 import MotionMixerFlubber from "@examples/flubber/motionMixer";
+import MotionMixerBezierQuadratic from "@examples/bezierQuadratic/motionMixer";
 
 function App() {
   const [taps, setTaps] = useState<Tap[]>([]);
@@ -24,6 +26,10 @@ function App() {
                 "flubber + web worker": <WorkerFlubber />,
                 "linear + motion mixer": <MotionMixerLinear />,
                 "linear + web worker": <WorkerLinear />,
+                "quadratic bezier + motion mixer": (
+                  <MotionMixerBezierQuadratic />
+                ),
+                "quadratic bezier + web worker": <WorkerQuadraticBezier />,
               }[tap]
             }
           </Fragment>

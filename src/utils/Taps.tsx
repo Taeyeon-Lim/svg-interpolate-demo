@@ -7,6 +7,8 @@ const InterpolateTaps = [
   "flubber + web worker",
   "linear + motion mixer",
   "linear + web worker",
+  "quadratic bezier + motion mixer",
+  "quadratic bezier + web worker",
 ] as const;
 
 export type Tap =
