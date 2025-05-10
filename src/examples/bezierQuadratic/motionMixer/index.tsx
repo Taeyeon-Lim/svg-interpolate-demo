@@ -1,6 +1,7 @@
 import { useState, MouseEvent } from "react";
 import RenderWithMotionMixer from "@utils/RenderWithMotionMixer";
-import { linearInterpolate, pointsToQuadraticPath } from "@utils/interpolate";
+import { pointsToQuadraticPath } from "@utils/pointsToPath";
+import { linearInterpolate } from "@utils/interpolate";
 import { pathToPoints } from "@utils/pathToPoints";
 
 export default function MotionMixerBezierQuadratic() {
