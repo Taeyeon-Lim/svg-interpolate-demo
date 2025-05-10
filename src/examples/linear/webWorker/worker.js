@@ -1,4 +1,5 @@
 import { pointsToLinearPath } from "@utils/pointsToPath";
+import { linearInterpolate } from "@utils/interpolate";
 import { pathToPoints } from "@utils/pathToPoints";
 
 self.onmessage = ({ data }) => {
