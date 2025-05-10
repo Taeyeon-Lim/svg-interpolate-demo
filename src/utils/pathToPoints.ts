@@ -1,6 +1,6 @@
 import { svgPathProperties } from "svg-path-properties";
 
-export default function pathToPoints(pathString: string, numPoints: number) {
+function pathToPoints(pathString: string, numPoints: number) {
   const path = getPathProperties(pathString);
   const pathLength = path.getTotalLength();
   const points = [];
@@ -24,3 +24,5 @@ function getPathProperties(pathString: string) {
 
   return new svgPathProperties(pathString);
 }
+
+export { pathToPoints };
