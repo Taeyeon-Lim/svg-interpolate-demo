@@ -1,6 +1,10 @@
 import { Points } from "@/types/points";
 
-function linearInterpolate(pointsA: Points, pointsB: Points, t: number) {
+function linearInterpolate(
+  pointsA: Points,
+  pointsB: Points,
+  t: number
+): Points {
   return pointsA.map((pointA, i) => {
     const pointB = pointsB[i];
     return [
