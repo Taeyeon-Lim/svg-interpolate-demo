@@ -28,7 +28,8 @@
       "@utils/*": ["src/utils/*"],
       "@examples/*": ["src/examples/*"],
       "@/*": ["src/*"]
-    }
+    },
+    "types": ["vitest/globals"]
   },
   "include": ["src"]
 }
