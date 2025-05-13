@@ -93,4 +93,4 @@ function getPathProperties(pathString: string) {
   return new svgPathProperties(pathString);
 }
 
-export { samplingPoints };
+export { samplingPoints, pathToFeaturePoints, getPathProperties };
