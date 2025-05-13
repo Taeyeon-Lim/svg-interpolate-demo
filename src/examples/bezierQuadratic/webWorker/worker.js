@@ -1,12 +1,11 @@
 import { pointsToQuadraticPath } from "@utils/pointsToPath";
 import { linearInterpolate } from "@utils/interpolate";
-import { pathToPoints } from "@utils/pathToPoints";
+import { samplingPoints } from "@utils/pathToPoints";
 
 self.onmessage = ({ data }) => {
   const { fromPath, toPath, frameCount, pointCount } = data;
 
-  const fromPoints = pathToPoints(fromPath, pointCount);
-  const toPoints = pathToPoints(toPath, pointCount);
+  const { fromPoints, toPoints } = samplingPoints(fromPath, toPath, pointCount);
 
   const frames = [];
 
