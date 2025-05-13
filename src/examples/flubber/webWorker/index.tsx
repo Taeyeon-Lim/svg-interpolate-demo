@@ -19,7 +19,7 @@ export default function WorkerFlubber() {
       <input
         type='range'
         min={0.05}
-        max={2}
+        max={5}
         step={0.05}
         defaultValue={maxSegmentLength}
         onMouseUp={handleMaxSegmentLength}

@@ -15,8 +15,8 @@ export default function WorkerLinear() {
       [Point: {pointCount}]
       <input
         type='range'
-        min={2}
-        max={500}
+        min={0}
+        max={550}
         step={1}
         defaultValue={pointCount}
         onMouseUp={handlePointCount}
