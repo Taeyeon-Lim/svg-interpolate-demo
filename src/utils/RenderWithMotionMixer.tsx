@@ -4,11 +4,9 @@ import { colors, paths, InterpolateConfig as config } from "@utils/pathVars";
 
 export default function RenderWithMotionMixer({
   mixer,
-  motionProps,
   children,
 }: PropsWithChildren<{
   mixer: ((from: string, to: string) => (v: number) => any) | undefined;
-  motionProps?: { [key: string]: number };
 }>) {
   // Controls State
   const [viewPoints, setViewPoints] = useState(false);

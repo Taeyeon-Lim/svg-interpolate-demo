@@ -22,10 +22,7 @@ export default function MotionMixerBezierQuadratic() {
     };
   };
   return (
-    <RenderWithMotionMixer
-      mixer={BezierQuadraticMixer}
-      motionProps={{ pointCount }}
-    >
+    <RenderWithMotionMixer mixer={BezierQuadraticMixer}>
       {/* point count control */}
       [Point: {pointCount}]
       <input

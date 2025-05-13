@@ -23,7 +23,7 @@ export default function MotionMixerLinear() {
   };
 
   return (
-    <RenderWithMotionMixer mixer={linearMixer} motionProps={{ pointCount }}>
+    <RenderWithMotionMixer mixer={linearMixer}>
       {/* point count control */}
       [Point: {pointCount}]
       <input
