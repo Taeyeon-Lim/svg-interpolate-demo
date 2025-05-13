@@ -84,11 +84,7 @@ export default function RenderWithWorker({
         <motion.path
           d={path}
           fill={fill}
-          stroke={
-            workerProps?.pointCount && workerProps.pointCount < 3
-              ? fill
-              : "transparent"
-          }
+          stroke={"transparent"}
           markerStart={viewPoints ? "url(#dot)" : ""}
           markerMid={viewPoints ? "url(#dot)" : ""}
         />

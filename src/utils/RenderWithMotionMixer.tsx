@@ -53,11 +53,7 @@ export default function RenderWithMotionMixer({
         <motion.path
           d={path}
           fill={fill}
-          stroke={
-            motionProps?.pointCount && motionProps.pointCount < 3
-              ? fill
-              : "transparent"
-          }
+          stroke={"transparent"}
           markerStart={viewPoints ? "url(#dot)" : ""}
           markerMid={viewPoints ? "url(#dot)" : ""}
         />
