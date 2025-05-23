@@ -2,6 +2,7 @@ import { svgPathProperties } from "svg-path-properties";
 import { PartProperties, Point } from "svg-path-properties/dist/types/types";
 import { Points, FeaturePoint } from "@/types/points";
 import { measureArea } from "./math/area";
+import { squaredDistance } from "./math/distance";
 
 function samplingPoints(fromPath: string, toPath: string, segment: number = 0) {
   const fromPathProperties = getPathProperties(fromPath);
@@ -29,9 +30,12 @@ function samplingPoints(fromPath: string, toPath: string, segment: number = 0) {
 
   sortPoints(fromPoints, toPoints);
 
+  const startIndex = findNearestIndex(fromPoints, toPoints);
+  const forwardToPoints = toPoints.splice(startIndex);
+
   return {
     fromPoints,
-    toPoints,
+    toPoints: [...forwardToPoints, ...toPoints],
   };
 }
 
@@ -106,6 +110,24 @@ function sortPoints(fromPoints: Points, toPoints: Points) {
   if (measureArea(toPoints) < 0) {
     toPoints.reverse();
   }
+}
+
+function findNearestIndex(A: Points, B: Points) {
+  let minDistance = Infinity;
+  let bestIndex = [0, 0];
+
+  for (let i = 0; i < B.length; i++) {
+    for (let j = 0; j < A.length; j++) {
+      const distance = squaredDistance(A[j], B[i]);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        bestIndex = [i, j];
+      }
+    }
+  }
+
+  return Math.abs(bestIndex[0] - bestIndex[1]);
 }
 
 export { samplingPoints, pathToFeaturePoints, getPathProperties };
