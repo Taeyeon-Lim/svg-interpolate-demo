@@ -3,7 +3,6 @@ import { interpolate } from "flubber";
 self.onmessage = ({ data }) => {
   const { fromPath, toPath, frameCount, maxSegmentLength } = data;
 
-  // 보간
   const morphFunction = interpolate(fromPath, toPath, {
     maxSegmentLength,
   });
