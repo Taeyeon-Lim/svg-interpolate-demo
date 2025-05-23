@@ -1,6 +1,7 @@
 import { svgPathProperties } from "svg-path-properties";
 import { PartProperties, Point } from "svg-path-properties/dist/types/types";
 import { Points, FeaturePoint } from "@/types/points";
+import { measureArea } from "./math/area";
 
 function samplingPoints(fromPath: string, toPath: string, segment: number = 0) {
   const fromPathProperties = getPathProperties(fromPath);
@@ -17,7 +18,7 @@ function samplingPoints(fromPath: string, toPath: string, segment: number = 0) {
       ? toFeaturePoints.length - fromFeaturePoints.length + segment
       : segment
   );
-  const toPoints = sampling(
+  let toPoints = sampling(
     toFeaturePoints,
     toPathProperties.getTotalLength(),
     toPathProperties.getPointAtLength,
@@ -26,7 +27,12 @@ function samplingPoints(fromPath: string, toPath: string, segment: number = 0) {
       : segment
   );
 
-  return { fromPoints, toPoints };
+  sortPoints(fromPoints, toPoints);
+
+  return {
+    fromPoints,
+    toPoints,
+  };
 }
 
 function pathToFeaturePoints(parts: PartProperties[]) {
@@ -91,6 +97,15 @@ function getPathProperties(pathString: string) {
 
   // Node
   return new svgPathProperties(pathString);
+}
+
+function sortPoints(fromPoints: Points, toPoints: Points) {
+  if (measureArea(fromPoints) < 0) {
+    fromPoints.reverse();
+  }
+  if (measureArea(toPoints) < 0) {
+    toPoints.reverse();
+  }
 }
 
 export { samplingPoints, pathToFeaturePoints, getPathProperties };
